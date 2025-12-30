@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
+:root{
+    --color-primary: #0F5E7E;
+    --color-secondary: #E6F2F7;
+    --color-accent: #4F46E5;
+    --text-primary: #1F2933;
+    --text-secondary: #6B7280
 
-*{
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container_global{
+.container_global {
     margin: 20px 70px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -24,7 +32,7 @@ h3 {
     color: aliceblue;
 }
 
-.btn{
+.btn {
     background-color: darkcyan;
     color: aliceblue;
     height: 30px;
@@ -38,6 +46,7 @@ h3 {
     margin: 0px 20px;
 
 }
+
 /*///////////HEADER//////////*/
 header {
     z-index: 1000;
@@ -45,73 +54,119 @@ header {
     position: sticky;
     width: 100vw;
     max-width: 100%;
+    height: 45px;
 }
 
-.header__container{
+.header__container {
     background-color: #0F5E7E;
-    height: 80px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     padding: 0px 100px;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
-.header__container img{
+.header__container img {
     display: flex;
     width: 65px;
     margin: 0px 20px;
 }
 
-.header__container nav{
+.header__container nav {
     text-align: justify;
     align-items: center;
     min-width: 200px;
-    margin: 0px 20px;
+    margin: 10px 20px;
 }
 
-.header__container nav ul{
+.header__container nav ul {
     list-style: none;
     display: flex;
-    gap: 70px;
+    gap: 10px;
     white-space: nowrap;
     align-content: space-between;
 }
 
-.header__container nav ul a{
+.header__container nav ul a {
     color: aliceblue;
     font-size: large;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 25px;
 }
 
-.btn-quote:hover{
-    background-color: rgba(56, 159, 249, 0.773);
+.btn-quote:hover,
+.header__container nav ul a:hover {
+    background-color: var(--color-accent);
     transition: background-color 0.3s ease-in-out;
-
 }
 
 /*///////////MAIN//////////*/
 /*-----------HERO----------*/
-.main__hero{
+.main__hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 45px;
+    position: sticky;
+    background-image: url(./img/hero_oficina-exterior.png);
+    background-size: 10%;
+    background-position: center 22%;
+    background-repeat: no-repeat;
+    animation: heroZoom 14s ease-in-out infinite alternate;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    min-height: 300px;
+    width: 100%;
 }
 
-.main__hero img{
-    width: 800px;
+/* overlay */
+.main__hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+/* contenido encima */
+.main__hero > *{
     position: relative;
     z-index: 1;
 }
 
-.main__hero h1{
-    position: absolute;
-    z-index: 2;
-    margin-top: 450px;
+@keyframes heroZoom{
+    from { background-size: 100%; }
+    to   { background-size: 115%; }
 }
+.main__hero h1 {
+    position: absolute;
+    margin-top: 34vh;
+}
+
 /*-----------HERO----------*/
-/*-----------HERO----------*/
-.main__team-people img{
+.main__team-people img {
     width: 200px;
     max-width: 100%;
 }
+
 /*///////////FOOTER//////////*/
+
+
+
+/*///////////@MEDIA QUERY@//////////*/
+
+@media (max-width: 900px) {
+    .header__container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .header__container nav {
+        display: none;
+    }
+
+    .header__container nav ul {
+        gap: 20px;
+    }
+}
